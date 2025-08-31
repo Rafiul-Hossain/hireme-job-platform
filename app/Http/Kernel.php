@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http;
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    protected $routeMiddleware = [
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
+        'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
+        'signed' => \App\Http\Middleware\ValidateSignature::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'throttle.logins' => \App\Http\Middleware\ThrottleLoginAttempts::class,
+        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'role' => \App\Http\Middleware\CheckRole::class,
+        'jwt.verify' => 'App\Http\Middleware\JwtMiddleware',
+        'jwt.auth' => 'Tymon\JWTAuth\Http\Middleware\Authenticate',
+        'jwt.refresh' => 'Tymon\JWTAuth\Http\Middleware\RefreshToken',
+        'admin' => 'App\Http\Middleware\AdminMiddleware',
+        'employer' => 'App\Http\Middleware\EmployerMiddleware',
+        'job_seeker' => 'App\Http\Middleware\JobSeekerMiddleware',
+    ];
+}
